@@ -17,7 +17,7 @@ const fetchTodos = async () => {
 };
 
 const addTodo = async (title) => {
-  const res = await fetch("https://localhost:5000/api/todos", {
+  const res = await fetch("http://localhost:5000/api/todos", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
