@@ -13,5 +13,28 @@ function App() {
         const res = await fetch("http://localhost:5000/api/todos");
         const data = await res.json();
         setTodos(data);
-    }
+    };
+
+    const addTodo = async (title) => {
+        const res = await fetch("http://localhost:5000/api/todos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ title }),
+        });
+
+        const newTodo = await res.json();
+        setTodos([...todos, newTodo]);
+    };
+
+    return (
+        <div style={{ padding: "20px" }}>
+            <h1>My To-Do App</h1>
+            <ToDoForm addTodo={addTodo} />
+            <ToDoList todos={todos} />
+        </div>
+    );
 }
+
+export default App;
