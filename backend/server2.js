@@ -6,3 +6,9 @@ const todoRoutes = require("./routes/todos");
 
 const app = express();
 
+//middleware
+app.use(cors());
+app.use(express.json());
+app.use("/api/todos", todoRoutes);
+
+// Test route 
